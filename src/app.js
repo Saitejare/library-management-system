@@ -51,6 +51,16 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    project: 'Library Management System API',
+    version: '1.0.0',
+    message: 'API is running successfully',
+    documentation: '/api-docs',
+  });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/members', memberRoutes);
